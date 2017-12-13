@@ -1,0 +1,317 @@
+[
+    {
+        "id": "5afeb27c.07f07c",
+        "type": "rpi-neopixels",
+        "z": "d90ff0d2.0ad49",
+        "name": "",
+        "pixels": "50",
+        "bgnd": "",
+        "fgnd": "",
+        "wipe": "10",
+        "mode": "pixels",
+        "rgb": "grb",
+        "x": 930,
+        "y": 360,
+        "wires": []
+    },
+    {
+        "id": "114ed0a8.888d5f",
+        "type": "ui_colour_picker",
+        "z": "d90ff0d2.0ad49",
+        "name": "Colours",
+        "label": "Colours",
+        "group": "b35da3df.4e68a",
+        "format": "rgb",
+        "outformat": "string",
+        "showSwatch": true,
+        "showPicker": false,
+        "showValue": false,
+        "showAlpha": false,
+        "showLightness": true,
+        "dynOutput": "true",
+        "order": 1,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "topic": "",
+        "x": 160,
+        "y": 480,
+        "wires": [
+            [
+                "4c2dc17a.2dd17"
+            ]
+        ]
+    },
+    {
+        "id": "b7242b06.4b6bb8",
+        "type": "debug",
+        "z": "d90ff0d2.0ad49",
+        "name": "",
+        "active": true,
+        "console": "false",
+        "complete": "payload",
+        "x": 850,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "4c2dc17a.2dd17",
+        "type": "split",
+        "z": "d90ff0d2.0ad49",
+        "name": "",
+        "splt": "rgb",
+        "spltType": "str",
+        "arraySplt": 1,
+        "arraySpltType": "len",
+        "stream": false,
+        "addname": "",
+        "x": 210,
+        "y": 400,
+        "wires": [
+            [
+                "1c6a9a6c.f85966"
+            ]
+        ]
+    },
+    {
+        "id": "1c6a9a6c.f85966",
+        "type": "change",
+        "z": "d90ff0d2.0ad49",
+        "name": "Remove the (",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": "(",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 300,
+        "y": 340,
+        "wires": [
+            [
+                "54581e31.7fbd5"
+            ]
+        ]
+    },
+    {
+        "id": "54581e31.7fbd5",
+        "type": "change",
+        "z": "d90ff0d2.0ad49",
+        "name": "Remove )",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": ")",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 380,
+        "y": 260,
+        "wires": [
+            [
+                "3f085abd.7a72e6"
+            ]
+        ]
+    },
+    {
+        "id": "cceb9e6c.c8a28",
+        "type": "ui_button",
+        "z": "d90ff0d2.0ad49",
+        "name": "Power Off",
+        "group": "b35da3df.4e68a",
+        "order": 5,
+        "width": "6",
+        "height": "2",
+        "passthru": false,
+        "label": "Power Off",
+        "color": "White",
+        "bgcolor": "Black",
+        "icon": "warning",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "",
+        "x": 250,
+        "y": 643,
+        "wires": [
+            [
+                "9d5f170d.c5f1d8"
+            ]
+        ]
+    },
+    {
+        "id": "9d5f170d.c5f1d8",
+        "type": "exec",
+        "z": "d90ff0d2.0ad49",
+        "command": "sudo poweroff",
+        "addpay": false,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Power off",
+        "x": 541,
+        "y": 644.5,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "93bec1ef.d8f2a",
+        "type": "ui_button",
+        "z": "d90ff0d2.0ad49",
+        "name": "Default",
+        "group": "b35da3df.4e68a",
+        "order": 2,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Default",
+        "color": "Black",
+        "bgcolor": "Yellow",
+        "icon": "",
+        "payload": "246,80,9",
+        "payloadType": "str",
+        "topic": "",
+        "x": 620,
+        "y": 400,
+        "wires": [
+            [
+                "5afeb27c.07f07c"
+            ]
+        ]
+    },
+    {
+        "id": "dbd891cf.cdf26",
+        "type": "ui_button",
+        "z": "d90ff0d2.0ad49",
+        "name": "",
+        "group": "b35da3df.4e68a",
+        "order": 4,
+        "width": 0,
+        "height": 0,
+        "passthru": false,
+        "label": "Reboot",
+        "color": "White",
+        "bgcolor": "Black",
+        "icon": "cached",
+        "payload": "sudo reboot",
+        "payloadType": "str",
+        "topic": "",
+        "x": 260,
+        "y": 759.9999999999999,
+        "wires": [
+            [
+                "5959661e.33b008"
+            ]
+        ]
+    },
+    {
+        "id": "5959661e.33b008",
+        "type": "exec",
+        "z": "d90ff0d2.0ad49",
+        "command": "",
+        "addpay": true,
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "oldrc": false,
+        "name": "Reboot",
+        "x": 560,
+        "y": 764.9999999999999,
+        "wires": [
+            [],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "a58859a5.7460a8",
+        "type": "ui_text_input",
+        "z": "d90ff0d2.0ad49",
+        "name": "Manual Colour Selection",
+        "label": "Enter Colour",
+        "group": "b35da3df.4e68a",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "passthru": true,
+        "mode": "text",
+        "delay": "0",
+        "topic": "",
+        "x": 570,
+        "y": 280,
+        "wires": [
+            [
+                "5afeb27c.07f07c"
+            ]
+        ]
+    },
+    {
+        "id": "3f085abd.7a72e6",
+        "type": "change",
+        "z": "d90ff0d2.0ad49",
+        "name": "Remove spaces so output is CSV",
+        "rules": [
+            {
+                "t": "change",
+                "p": "payload",
+                "pt": "msg",
+                "from": " ",
+                "fromt": "str",
+                "to": "",
+                "tot": "str"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 600,
+        "y": 200,
+        "wires": [
+            [
+                "5afeb27c.07f07c",
+                "b7242b06.4b6bb8"
+            ]
+        ]
+    },
+    {
+        "id": "b35da3df.4e68a",
+        "type": "ui_group",
+        "z": "",
+        "name": "Sliders",
+        "tab": "9a3e2e2e.ee9a9",
+        "order": 1,
+        "disp": true,
+        "width": "6"
+    },
+    {
+        "id": "9a3e2e2e.ee9a9",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Pixel Control",
+        "icon": "dashboard",
+        "order": 1
+    }
+]
